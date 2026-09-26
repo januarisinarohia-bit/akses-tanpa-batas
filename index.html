@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Transaksi Pembelian GoFood</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f5f5, #e8f5e9);
+    color: #333;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    width: 100%;
+    min-height: 300px;
+    background: linear-gradient(135deg, #008f3d, #00b94f);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 35px 8%;
+    overflow: hidden;
+}
+
+.header-text {
+    max-width: 550px;
+}
+
+.header-text h1 {
+    font-size: 42px;
+    margin: 0 0 12px;
+}
+
+.header-text p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.banner-info {
+    margin-top: 20px;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* GAMBAR DRIVER */
+
+.header-image {
+    width: 350px;
+    height: 220px;
+    object-fit: cover;
+
+    border-radius: 20px;
+    border: 5px solid white;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 18px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+}
+
+.judul {
+    color: #008f3d;
+
+    border-bottom: 2px solid #e8e8e8;
+
+    padding-bottom: 12px;
+    margin-top: 0;
+}
+
+/* ================= FORM ================= */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+
+    border-color: #00a843;
+
+    box-shadow: 0 0 5px rgba(0,168,67,0.3);
+}
+
+/* ================= MENU MAKANAN ================= */
+
+.menu-container {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 18px;
+
+    margin-top: 15px;
+}
+
+.menu {
+
+    border: 2px solid #ddd;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background: white;
+
+    transition: 0.3s;
+
+    position: relative;
+}
+
+.menu:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+    0 8px 18px rgba(0,0,0,0.15);
+}
+
+.menu.aktif {
+
+    border-color: #00a843;
+
+    box-shadow:
+    0 0 0 3px rgba(0,168,67,0.15);
+}
+
+/* GAMBAR MAKANAN */
+
+.menu img {
+
+    width: 100%;
+
+    height: 150px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.menu-info {
+
+    padding: 12px;
+
+    text-align: center;
+}
+
+.menu-info h3 {
+
+    margin: 5px 0;
+}
+
+.harga {
+
+    color: #008f3d;
+
+    font-weight: bold;
+
+    font-size: 16px;
+}
+
+.pilih {
+
+    margin-top: 8px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+/* ================= QTY ================= */
+
+.qty-box {
+
+    display: flex;
+
+    width: 180px;
+
+    margin-top: 10px;
+}
+
+.qty-box button {
+
+    width: 50px;
+
+    height: 42px;
+
+    border: none;
+
+    background: #008f3d;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.qty-box input {
+
+    text-align: center;
+
+    border-radius: 0;
+
+    height: 42px;
+}
+
+/* ================= TOTAL ================= */
+
+.total-box {
+
+    margin-top: 20px;
+
+    padding: 18px;
+
+    background: #e9f8ed;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.total-box strong {
+
+    color: #008f3d;
+
+    font-size: 24px;
+}
+
+/* ================= BUTTON ================= */
+
+.button-container {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+}
+
+button {
+
+    padding: 13px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.proses {
+    background: #008f3d;
+}
+
+.batal {
+    background: #e53935;
+}
+
+.cetak {
+    background: #1976d2;
+}
+
+bu
